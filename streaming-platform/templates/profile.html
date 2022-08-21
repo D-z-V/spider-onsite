@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ user.full_name  }}
+{% endblock %}
+
+
+{% block content %}
+<div class="profile-content">
+    <div>
+        {% if session['user'] == user.id %}
+        <div class="profile-info" style="margin-top: 8%;">
+            <div class="profile-info-left">
+                <form action="{{ url_for('profile', user_id=session.user) }}" method="POST" enctype="multipart/form-data">
+                    {{ form.csrf_token }}
+                    <input type="file" name="profile_pic" id="profile_pic" style="display: none;">
+                    <label for="profile_pic" class="profile-img-label">
+                        <img src="{{ url_for('static', filename='/images/users/' +  user.profile_pic ) }}" alt="profile" class="profile-img">
+                    </label>
+                    <button type="submit" class="upload">Upload</button>
+                </form>
+            </div>
+            <div class="profile-info-right">
+                <h1> {{ user.full_name  }} </h1>
+            </div>
+        </div>
+        {% elif session['user'] != user.id %}
+        <div class="profile-info">
+            <div class="profile-info-left">
+                <img src="{{ url_for('static', filename='/images/users/' +  user.profile_pic ) }}" alt="profile" class="profile-img">
+            </div>
+            <div class="profile-info-right">
+                <h1> {{ user.full_name  }} </h1>
+                <h3> {{ user.course }} </h3>
+                <h3> {{ user.department }} </h3>
+            </div>
+        </div>
+        <div class="comment-form">
+            <form action="{{ url_for('profile', user_id=user.id) }}" method="post">
+                {{ form.csrf_token }}
+                <textarea name="comment" id="comment" cols="60" rows="5" placeholder="Write a comment..."></textarea>
+                <button type="submit" class="submit"><span class="material-symbols-outlined">comment</span>
+                </button>
+            </form>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<div class="comments">
+    <h2 style="margin: 2rem; border-bottom: #000 solid 1px">Comments</h2>
+    {% for comment in comments %}
+    <div class="comment">
+        <div class="comment-left">
+            <img src="{{ url_for('static', filename='/images/users/' +  comment.profile_pic) }}" alt="profile" class="profile-img-comment">
+        </div>
+        <div class="comment-right">
+            <h3> {{ comment.posted_by }} </h3>
+            <p> {{ comment.comment }} </p>
+        </div>
+        <div class="comment-del">
+            <p class = "date"> {{ comment.date_posted }} </p>
+            {% if comment.posted_by_id == session['user'] %}
+            <form action="{{ url_for('profile', user_id=user.id) }}" method="post">
+                {{ form.csrf_token }}
+                <input type="hidden" name="comment_id" value="{{ comment.id }}">
+                <button type="submit" class="delete"><span class="material-symbols-outlined">delete</span>
+                </button>
+            </form>
+            {% else %}
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

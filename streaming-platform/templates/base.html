@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename='css/format.css') }}"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.png') }}" type="image/x-icon">
+    <title>{% block title %} {% endblock %}</title>
+  </head>
+  <body>
+    <div id="particles-js">
+      <script tpye="text/javascript" src="{{url_for('static', filename='javascript/particles.js')}}"></script>
+      <script tpye="text/javascript" src="{{url_for('static', filename='javascript/app.js')}}""></script>
+    </div>
+    <div class="navbar">
+      <div class="navbar-left">
+        <div class="container">
+          <ul class="nav">
+            <li><a href="home" class="brand">Stream</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="search">
+        <div class="container">
+          <form action="{{ url_for('search') }}" method="POST" class="search-form">
+            {{ form.csrf_token }}
+            <input type="text" name="search" placeholder="Search">
+            <button type="submit" class="submit"><span class="material-symbols-outlined">search</span></button>
+          </form>
+        </div>
+      </div>
+      <div class="navbar-right">
+        <div class="container">
+          <ul class="nav">
+            <li>
+              <a href='{{ url_for('profile', user_id=session.user) }}'  style="margin-left: 30px;">Profile</a>
+              <a href="../login" style="margin-left: 30px;">LogOut</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    {% block content %} {% endblock %}
+  </body>
+</html>
+

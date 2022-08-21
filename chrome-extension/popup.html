@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chrome Extension</title>
+    <link rel="stylesheet" href="css/style.css">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://www.youtube.com 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h3>Style Editor</h3>
+        </div>
+        <div class="content">
+            <div class="form-container">
+                <form>
+                    <div class="form-group">
+                        <label for="value">Background Color</label>
+                        <input type="text" id="bg" class="form-control" placeholder="Enter Value">
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="value">Font Size</label>
+                        <input type="text" id="fs" class="form-control" placeholder="Enter Value">
+                    </div>
+                    <br>
+                </form>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </div>
+    <script src="./script.js"></script>
+</html>

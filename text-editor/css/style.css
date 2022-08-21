@@ -1,0 +1,28 @@
+body {
+    background: no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    overflow-x: hidden;   
+    color: black;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.form-control {
+    margin: 1%;
+    color: rgb(0, 187, 255) !important;
+}
+
+.btn {
+    margin-left: 46%;
+}
+
+.down {
+    margin-left: 45%;
+}

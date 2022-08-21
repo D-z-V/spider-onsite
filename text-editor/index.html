@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Text - Editor</title>
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/jquery-ui.min.css">
+    <script src="https://kit.fontawesome.com/e9cd8ca081.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <section id="header">
+        <h3 style="margin: 2% 0% 2% 45%;"> Text Editor </h3>
+        <div id="forms">
+            <form>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Font Size" id="font-size">
+                    <input type="text" class="form-control" placeholder="Font Color" id="font-color">
+                    <input type="text" class="form-control" placeholder="Font style" id="font-style">
+                </div>
+            </form>
+            <button class="btn btn-primary" id="add" onclick=UpdateText()> Apply </button>
+        </div>
+    </section>
+    <section id="editor">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <textarea id="textarea" rows="12" cols="142" style="color: black; margin:2%;"></textarea>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="download">
+        <button class="btn btn-primary down" id="add" onclick=save()>Download</button>
+    </section>
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/jquery-ui.min.js"></script>
+    <script src="./bootstrap/js/bootstrap.min.js"></script>
+    <script src="./js/script.js"></script>
+</body>
+</html>

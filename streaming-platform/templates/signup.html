@@ -1,0 +1,55 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename='css/login.css') }}">
+    <title>Sign Up</title>
+</head>
+<body>
+    <div style="height: 170%;" id="particles-js">
+        <script tpye="text/javascript" src="{{url_for('static', filename='javascript/particles.js')}}"></script>
+        <script tpye="text/javascript" src="{{url_for('static', filename='javascript/app.js')}}""></script>
+    </div>
+    <div class="container">
+        <div class="row">
+                <h2>Stream</h2>
+            <div class="pan">
+                <div class="panel">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">Please Sign Up</h4>
+                    </div>
+                    <div class="panel-body">
+                        <form accept-charset="UTF-8" role="form" method="post" action="{{url_for('signup')}}">
+                            <fieldset>
+                                <div class="form-group">
+                                    {{ form.full_name.label }}: <br>
+                                    {{ form.full_name(class="form-control" ,placeholder="Full Name") }} 
+                                </div>
+                                <div class="form-group">
+                                    {{ form.email.label }}: <br>
+                                    {{ form.email(class="form-control" ,placeholder="Email") }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form.password.label }}: <br>
+                                    {{ form.password(class="form-control" ,placeholder="Password") }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form.confirm_password.label }}: <br>
+                                    {{ form.confirm_password(class="form-control" ,placeholder="Re-enter Password") }}
+                                </div>
+                                {{ form.csrf_token }}
+                                {{ form.submit(class="btn") }}
+                            </fieldset>
+                        </form>
+                        {% if (status == 1):%}
+                            <p class="sgt">{{ "Sign Up Success, " }}</p><a class="sgt" href="login">Click here</a><p class="sgt"> to login</p>
+                        {% elif (status == 3)%}
+                        <p class="sgt">{{ "Email already exists , " }}</p><a class="sgt" href="login">Click here</a><p class="sgt"> to login</p>                            
+                        {% endif %} 
+                        <p class="sgt">Already have an account? </p><a class="sgt" href="login">Log In</a>    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</html>
